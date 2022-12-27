@@ -1,0 +1,20 @@
+version: "3"  # optional since v1.27.0
+services:
+  frontend:
+    build: ./Frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+  backend:
+    build: ./Backend
+    ports:
+      - "3000:3000"
+      - "14306:14306"
+    environment:
+      - PORT=3000
+      - NODE_ENV=value
+      - MONGO_DB_CONNECTION_STRING=mongodb+srv://gctest:googlecloud@cluster0.1yttwe3.mongodb.net/?retryWrites=true&w=majority
+      - MONGO_DB_NAME=cluster0
+      - REDIS_URI=rediss://default:AVNS_TAOUIIP8H8aYtMlu_lw@gctest-prik-1a2a.aivencloud.com:14306
+      
